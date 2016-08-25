@@ -14,7 +14,7 @@ import xlsxwriter
 
 class XLSXSheetWriter(SheetWriter):
     """
-    xls, xlsx and xlsm sheet writer
+    xlsx and xlsm sheet writer
     """
     def set_sheet_name(self, name):
         self.current_row = 0
@@ -30,7 +30,7 @@ class XLSXSheetWriter(SheetWriter):
 
 class XLSXWriter(BookWriter):
     """
-    xls, xlsx and xlsm writer
+    xlsx and xlsm writer
     """
     def __init__(self):
         BookWriter.__init__(self)
@@ -73,7 +73,7 @@ _xlsx_registry = {
     "writer": XLSXWriter,
     "stream_type": "binary",
     "mime_type": _XLSX_MIME,
-    "library": "pyexcel-xlsx"
+    "library": "pyexcel-xlsxw"
 }
 
 _xlsm_registry = {
@@ -81,7 +81,7 @@ _xlsm_registry = {
     "writer": XLSXWriter,
     "stream_type": "binary",
     "mime_type": "application/vnd.ms-excel.sheet.macroenabled.12",
-    "library": "pyexcel-xlsx"
+    "library": "pyexcel-xlsxw"
 }
 
 exports = (_xlsx_registry, _xlsm_registry)
