@@ -1,10 +1,10 @@
 """
-    pyexcel_xlsx
+    pyexcel_xlsxw
     ~~~~~~~~~~~~~~~~~~~
 
-    The lower level xlsx file format handler using openpyxl
+    The lower level xlsx file format writer using xlsxwriter
 
-    :copyright: (c) 2015-2016 by Onni Software Ltd & its contributors
+    :copyright: (c) 2016 by Onni Software Ltd & its contributors
     :license: New BSD License
 """
 from pyexcel_io.book import BookWriter

@@ -168,7 +168,7 @@ Here is the sample code:
 
 
 Writing to a StringIO instance
-================================================================================
+********************************************************************************
 
 You need to pass a StringIO instance to Writer:
 
