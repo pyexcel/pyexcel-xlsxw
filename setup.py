@@ -7,7 +7,7 @@ except ImportError:
 
 NAME = 'pyexcel-xlsxw'
 AUTHOR = 'C.W.'
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 EMAIL = 'wangc_2011 (at) hotmail.com'
 LICENSE = 'New BSD'
 PACKAGES = find_packages(exclude=['ez_setup', 'examples', 'tests'])
@@ -26,6 +26,7 @@ INSTALL_REQUIRES = [
     'XlsxWriter==0.9.3',
     'pyexcel-io>=0.2.2',
 ]
+
 
 EXTRAS_REQUIRE = {
 }
@@ -50,14 +51,37 @@ def read_files(*files):
     """Read files into setup"""
     text = ""
     for single_file in files:
-        text = text + read(single_file) + "\n"
+        content = read(single_file)
+        text = text + content + "\n"
     return text
 
 
 def read(afile):
     """Read a file into setup"""
     with open(afile, 'r') as opened_file:
-        return opened_file.read()
+        content = filter_out_test_code(opened_file)
+        content = "".join(list(content))
+        return content
+
+
+def filter_out_test_code(file_handle):
+    found_test_code = False
+    for line in file_handle.readlines():
+        if line.startswith('.. testcode:'):
+            found_test_code = True
+            continue
+        if found_test_code is True:
+            if line.startswith('  '):
+                continue
+            else:
+                empty_line = line.strip()
+                if len(empty_line) == 0:
+                    continue
+                else:
+                    found_test_code = False
+                    yield line
+        else:
+            yield line
 
 
 if __name__ == '__main__':
