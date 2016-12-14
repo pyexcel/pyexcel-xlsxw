@@ -1,7 +1,7 @@
 overrides: "pyexcel.yaml"
 name: "pyexcel-xlsxw"
 nick_name: xlsxw
-version: 0.0.2
+version: 0.3.0
 release: 0.0.1
 file_type: xlsx
 dependencies:

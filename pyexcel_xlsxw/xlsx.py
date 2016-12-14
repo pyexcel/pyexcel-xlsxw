@@ -24,7 +24,7 @@ class XLSXSheetWriter(SheetWriter):
         write a row into the file
         """
         for i in range(0, len(array)):
-            self.native_sheet.write(self.current_row, i, array[i])
+            self._native_sheet.write(self.current_row, i, array[i])
         self.current_row += 1
 
 
@@ -34,8 +34,7 @@ class XLSXWriter(BookWriter):
     """
     def __init__(self):
         BookWriter.__init__(self)
-        self.current_sheet = 0
-        self.native_book = None
+        self._native_book = None
 
     def open(self, file_name, **keywords):
         BookWriter.open(self, file_name, **keywords)
@@ -49,19 +48,19 @@ class XLSXWriter(BookWriter):
             _date_format,
             options[_date_format])
 
-        self.native_book = xlsxwriter.Workbook(
+        self._native_book = xlsxwriter.Workbook(
             file_name, options
          )
 
     def create_sheet(self, name):
-        return XLSXSheetWriter(self.native_book,
-                               self.native_book.add_worksheet(name), name)
+        return XLSXSheetWriter(self._native_book,
+                               self._native_book.add_worksheet(name), name)
 
     def close(self):
         """
         This call actually save the file
         """
-        self.native_book.close()
+        self._native_book.close()
 
 
 _XLSX_MIME = (

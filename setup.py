@@ -7,7 +7,7 @@ except ImportError:
 
 NAME = 'pyexcel-xlsxw'
 AUTHOR = 'C.W.'
-VERSION = '0.0.2'
+VERSION = '0.3.0'
 EMAIL = 'wangc_2011 (at) hotmail.com'
 LICENSE = 'New BSD'
 DESCRIPTION = (
