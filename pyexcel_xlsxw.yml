@@ -6,5 +6,5 @@ release: 0.0.1
 file_type: xlsx
 dependencies:
   - XlsxWriter==0.9.3
-  - pyexcel-io>=0.2.2
+  - pyexcel-io>=0.3.0
 description: A wrapper library to write data in xlsx and xlsm format

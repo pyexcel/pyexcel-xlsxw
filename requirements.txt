@@ -1,2 +1,2 @@
 XlsxWriter==0.9.3
-pyexcel-io>=0.2.2
+pyexcel-io>=0.3.0
