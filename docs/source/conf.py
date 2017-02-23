@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+DESCRIPTION = (
+    'A wrapper library to write data in xlsx and xlsm format' +
+    ''
+)
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
@@ -16,8 +20,8 @@ master_doc = 'index'
 
 project = u'pyexcel-xlsxw'
 copyright = u'2015-2017 Onni Software Ltd.'
-version = '0.0.1'
-release = '0.3.0'
+version = '0.3.0'
+release = '0.3.1'
 exclude_patterns = []
 pygments_style = 'sphinx'
 html_theme = 'default'
@@ -25,15 +29,19 @@ html_static_path = ['_static']
 htmlhelp_basename = 'pyexcel-xlsxwdoc'
 latex_elements = {}
 latex_documents = [
-    ('index', 'pyexcel-xlsxw.tex', u'pyexcel-xlsxw Documentation',
+    ('index', 'pyexcel-xlsxw.tex',
+     'pyexcel-xlsxw Documentation',
      'Onni Software Ltd.', 'manual'),
 ]
 man_pages = [
-    ('index', 'pyexcel-xlsxw', u'pyexcel-xlsxw Documentation',
+    ('index', 'pyexcel-xlsxw',
+     'pyexcel-xlsxw Documentation',
      [u'Onni Software Ltd.'], 1)
 ]
 texinfo_documents = [
-    ('index', 'pyexcel-xlsxw', u'pyexcel-xlsxw Documentation',
-     'Onni Software Ltd.', 'pyexcel-xlsxw', 'One line description of project.',
+    ('index', 'pyexcel-xlsxw',
+     'pyexcel-xlsxw Documentation',
+     'Onni Software Ltd.', 'pyexcel-xlsxw',
+     DESCRIPTION,
      'Miscellaneous'),
 ]
