@@ -37,19 +37,12 @@ class XLSXWriter(BookWriter):
         self._native_book = None
 
     def open(self, file_name, **keywords):
+        keywords.setdefault('default_date_format', 'dd/mm/yy')
+        keywords.setdefault('constant_memory', True)
         BookWriter.open(self, file_name, **keywords)
-        _date_format = "default_date_format"
-        options = {
-            _date_format: 'dd/mm/yy',
-            'constant_memory': True
-        }
-
-        options[_date_format] = keywords.get(
-            _date_format,
-            options[_date_format])
 
         self._native_book = xlsxwriter.Workbook(
-            file_name, options
+            file_name, keywords
          )
 
     def create_sheet(self, name):
