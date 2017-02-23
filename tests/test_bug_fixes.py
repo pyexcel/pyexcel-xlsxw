@@ -9,6 +9,8 @@ from textwrap import dedent
 from unittest import TestCase
 import pyexcel as pe
 
+from pyexcel_xlsxw import save_data
+
 
 class TestBugFix(TestCase):
 
@@ -79,3 +81,13 @@ class TestBugFix(TestCase):
         tmp_file = "date_field.xlsx"
         s = pe.get_sheet(file_name=os.path.join("tests", "fixtures", tmp_file))
         assert s.number_of_columns() == 2
+
+    def test_workbook_options(self):
+        cell_content = "= Hello World ="
+        tmp_file = "workbook_options.xlsx"
+        options = {'strings_to_formulas': False}
+        data = {"Sheet 1": [[cell_content]]}
+        save_data(tmp_file, data, options=options)
+        sheet = pe.get_sheet(file_name=tmp_file)
+        self.assertEqual(sheet[0][0], cell_content)
+        os.unlink(tmp_file)
