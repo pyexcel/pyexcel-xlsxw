@@ -39,11 +39,11 @@ class XLSXWriter(BookWriter):
     def open(self, file_name, **keywords):
         BookWriter.open(self, file_name, **keywords)
         _date_format = "default_date_format"
-        options = {
-            _date_format: 'dd/mm/yy',
-            'constant_memory': True
-        }
+        options = keywords.get('options', {})
+        options.setdefault(_date_format, 'dd/mm/yy')
+        options.setdefault('constant_memory', True)
 
+        # for backward compatibility, let the top-level kwarg take precedence
         options[_date_format] = keywords.get(
             _date_format,
             options[_date_format])
