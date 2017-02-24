@@ -37,6 +37,18 @@ class XLSXWriter(BookWriter):
         self._native_book = None
 
     def open(self, file_name, **keywords):
+        """
+        Open a file for writing
+
+        Please note that this writer configure xlsxwriter's BookWriter to use
+        constant_memory by default.
+
+        :param keywords: **default_date_format** control the date time format.
+                         **constant_memory** if true, reduces the memory footprint
+                         when writing large files. Other parameters can be found in
+                         `xlsxwriter's documentation
+                         <http://xlsxwriter.readthedocs.io/workbook.html>`_
+        """
         keywords.setdefault('default_date_format', 'dd/mm/yy')
         keywords.setdefault('constant_memory', True)
         BookWriter.open(self, file_name, **keywords)
