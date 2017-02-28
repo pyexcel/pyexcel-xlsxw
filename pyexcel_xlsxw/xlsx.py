@@ -80,12 +80,4 @@ _xlsx_registry = {
     "library": "pyexcel-xlsxw"
 }
 
-_xlsm_registry = {
-    "file_type": "xlsm",
-    "writer": XLSXWriter,
-    "stream_type": "binary",
-    "mime_type": "application/vnd.ms-excel.sheet.macroenabled.12",
-    "library": "pyexcel-xlsxw"
-}
-
-exports = (_xlsx_registry, _xlsm_registry)
+exports = (_xlsx_registry)
