@@ -80,4 +80,4 @@ _xlsx_registry = {
     "library": "pyexcel-xlsxw"
 }
 
-exports = (_xlsx_registry)
+exports = (_xlsx_registry,)
