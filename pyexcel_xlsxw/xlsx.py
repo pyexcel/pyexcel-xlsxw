@@ -44,9 +44,9 @@ class XLSXWriter(BookWriter):
         constant_memory by default.
 
         :param keywords: **default_date_format** control the date time format.
-                         **constant_memory** if true, reduces the memory footprint
-                         when writing large files. Other parameters can be found in
-                         `xlsxwriter's documentation
+                         **constant_memory** if true, reduces the memory
+                         footprint when writing large files. Other parameters
+                         can be found in `xlsxwriter's documentation
                          <http://xlsxwriter.readthedocs.io/workbook.html>`_
         """
         keywords.setdefault('default_date_format', 'dd/mm/yy')

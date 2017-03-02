@@ -10,20 +10,9 @@ else:
     from collections import OrderedDict
 
 
-class TestXlsmNxlsMultipleSheets(PyexcelMultipleSheetBase):
-    def setUp(self):
-        self.testfile = "multiple1.xlsm"
-        self.testfile2 = "multiple1.xlsx"
-        self.content = _produce_ordered_dict()
-        self._write_test_file(self.testfile)
-
-    def tearDown(self):
-        self._clean_up()
-
-
 class TestXlsNXlsxMultipleSheets(PyexcelMultipleSheetBase):
     def setUp(self):
-        self.testfile = "multiple1.xlsm"
+        self.testfile = "multiple1.xls"
         self.testfile2 = "multiple1.xlsx"
         self.content = _produce_ordered_dict()
         self._write_test_file(self.testfile)
