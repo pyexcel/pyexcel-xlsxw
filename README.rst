@@ -2,11 +2,17 @@
 pyexcel-xlsxw - Let you focus on data, instead of xlsx format
 ================================================================================
 
-.. image:: https://api.travis-ci.org/pyexcel/pyexcel-xlsxw.png
-    :target: http://travis-ci.org/pyexcel/pyexcel-xlsxw
+.. image:: https://raw.githubusercontent.com/pyexcel/pyexcel.github.io/master/images/patreon.png
+   :target: https://www.patreon.com/pyexcel
+
+.. image:: https://api.travis-ci.org/pyexcel/pyexcel-xlsxw.svg?branch=master
+   :target: http://travis-ci.org/pyexcel/pyexcel-xlsxw
 
 .. image:: https://codecov.io/github/pyexcel/pyexcel-xlsxw/coverage.png
-    :target: https://codecov.io/github/pyexcel/pyexcel-xlsxw
+   :target: https://codecov.io/github/pyexcel/pyexcel-xlsxw
+
+.. image:: https://readthedocs.org/projects/pyexcel-xlsxw/badge/?version=latest
+   :target: http://pyexcel-xlsxw.readthedocs.org/en/latest/
 
 **pyexcel-xlsxw** is a tiny wrapper library to write data in xlsx and xlsm fromat using xlsxwriter. You are likely to use it with `pyexcel <https://github.com/pyexcel/pyexcel>`__.
 
@@ -188,7 +194,7 @@ Development steps for code changes
 
 Upgrade your setup tools and pip. They are needed for development and testing only:
 
-#. pip install --upgrade setuptools "pip==7.1"
+#. pip install --upgrade setuptools pip
 
 Then install relevant development requirements:
 
@@ -239,3 +245,9 @@ On Windows systems, please issue this command::
    >>> import os
    >>> os.unlink("your_file.xlsx")
    >>> os.unlink("another_file.xlsx")
+
+Support the project
+================================================================================
+
+If your company has embedded pyexcel and its components into a revenue generating
+product, please `support me on patreon <https://www.patreon.com/pyexcel>`_.
