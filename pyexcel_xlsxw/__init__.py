@@ -10,17 +10,16 @@
 # flake8: noqa
 # this line has to be place above all else
 # because of dynamic import
+from pyexcel_io.plugins import IORegistry
+from pyexcel_io.io import get_data as read_data, isstream, store_data as write_data
+
+
 __FILE_TYPE__ = 'xlsx'
-__META__ = {
-    'submodule': __FILE_TYPE__,
-    'file_types': [__FILE_TYPE__],
-    'stream_type': 'binary'
-}
-__pyexcel_io_plugins__ = [__META__]
-
-
-from pyexcel_io.io import isstream, store_data as write_data
-
+IORegistry(__name__).add_a_writer(
+    submodule='xlsxw.XLSXWriter',
+    file_types=[__FILE_TYPE__],
+    stream_type='binary'
+)
 
 def save_data(afile, data, file_type=None, **keywords):
     """standalone module function for writing module supported file type"""

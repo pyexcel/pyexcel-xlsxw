@@ -35,7 +35,7 @@ or clone it and install it:
 
 .. code-block:: bash
 
-    $ git clone http://github.com/pyexcel/pyexcel-xlsxw.git
+    $ git clone https://github.com/pyexcel/pyexcel-xlsxw.git
     $ cd pyexcel-xlsxw
     $ python setup.py install
 

@@ -1,5 +1,5 @@
 import os
-from pyexcel_xlsxw import xlsx
+from pyexcel_xlsxw import xlsxw as xlsx
 from pyexcel_xls import xls
 from base import PyexcelWriterBase, PyexcelHatWriterBase
 

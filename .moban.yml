@@ -14,4 +14,5 @@ targets:
   - MANIFEST.in: MANIFEST.in.jj2
   - test.sh: test.sh.jj2
   - test.bat: test.sh.jj2
+  - .gitignore: .gitignore.jj2
   - "tests/requirements.txt": "tests/requirements.txt"

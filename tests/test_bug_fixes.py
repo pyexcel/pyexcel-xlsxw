@@ -86,7 +86,8 @@ class TestBugFix(TestCase):
         cell_content = "= Hello World ="
         tmp_file = "workbook_options.xlsx"
         data = {"Sheet 1": [[cell_content]]}
-        save_data(tmp_file, data, strings_to_formulas=False)
+        save_data(tmp_file, data, strings_to_formulas=False,
+                  library='pyexcel-xlsxw')
         sheet = pe.get_sheet(file_name=tmp_file)
         self.assertEqual(sheet[0][0], cell_content)
         os.unlink(tmp_file)
