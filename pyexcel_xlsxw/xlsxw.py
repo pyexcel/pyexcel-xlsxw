@@ -66,18 +66,3 @@ class XLSXWriter(BookWriter):
         This call actually save the file
         """
         self._native_book.close()
-
-
-_XLSX_MIME = (
-    "application/" +
-    "vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-
-_xlsx_registry = {
-    "file_type": "xlsx",
-    "writer": XLSXWriter,
-    "stream_type": "binary",
-    "mime_type": _XLSX_MIME,
-    "library": "pyexcel-xlsxw"
-}
-
-exports = (_xlsx_registry,)
