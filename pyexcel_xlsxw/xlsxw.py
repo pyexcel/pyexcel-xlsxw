@@ -7,14 +7,15 @@
     :copyright: (c) 2016 by Onni Software Ltd & its contributors
     :license: New BSD License
 """
+import xlsxwriter
+
 from pyexcel_io.book import BookWriter
 from pyexcel_io.sheet import SheetWriter
-import xlsxwriter
 
 
 class XLSXSheetWriter(SheetWriter):
     """
-    xlsx and xlsm sheet writer
+    xlsx sheet writer
     """
     def set_sheet_name(self, name):
         self.current_row = 0
@@ -30,7 +31,7 @@ class XLSXSheetWriter(SheetWriter):
 
 class XLSXWriter(BookWriter):
     """
-    xlsx and xlsm writer
+    xlsx writer
     """
     def __init__(self):
         BookWriter.__init__(self)
@@ -66,3 +67,4 @@ class XLSXWriter(BookWriter):
         This call actually save the file
         """
         self._native_book.close()
+        self._native_book = None

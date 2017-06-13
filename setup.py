@@ -40,7 +40,7 @@ CLASSIFIERS = [
 
 INSTALL_REQUIRES = [
     'XlsxWriter==0.9.3',
-    'pyexcel-io>=0.3.0',
+    'pyexcel-io>=0.4.0',
 ]
 
 
