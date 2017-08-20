@@ -7,18 +7,19 @@ except ImportError:
 
 NAME = 'pyexcel-xlsxw'
 AUTHOR = 'C.W.'
-VERSION = '0.4.0'
+VERSION = ''
 EMAIL = 'wangc_2011@hotmail.com'
 LICENSE = 'New BSD'
 DESCRIPTION = (
     'A wrapper library to write data in xlsx and xlsm format' +
     ''
 )
+URL = 'https://github.com/pyexcel/pyexcel-xlsxw'
+DOWNLOAD_URL = '%s/archive/0.4.0.tar.gz' % URL
+FILES = ['README.rst',  'CHANGELOG.rst']
 KEYWORDS = [
-    'excel',
-    'python',
-    'pyexcel',
     'xlsx'
+    'python'
 ]
 
 CLASSIFIERS = [
@@ -26,7 +27,6 @@ CLASSIFIERS = [
     'Topic :: Utilities',
     'Topic :: Software Development :: Libraries',
     'Programming Language :: Python',
-    'License :: OSI Approved :: BSD License',
     'Intended Audience :: Developers',
     'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
@@ -83,7 +83,11 @@ def filter_out_test_code(file_handle):
                     found_test_code = False
                     yield line
         else:
-            yield line
+            for keyword in ['|version|', '|today|']:
+                if keyword in line:
+                    break
+            else:
+                yield line
 
 
 if __name__ == '__main__':
@@ -93,7 +97,9 @@ if __name__ == '__main__':
         version=VERSION,
         author_email=EMAIL,
         description=DESCRIPTION,
-        long_description=read_files('README.rst', 'CHANGELOG.rst'),
+        url=URL,
+        download_url=DOWNLOAD_URL,
+        long_description=read_files(*FILES),
         license=LICENSE,
         keywords=KEYWORDS,
         extras_require=EXTRAS_REQUIRE,
