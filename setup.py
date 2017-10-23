@@ -7,7 +7,7 @@ from setuptools import setup, find_packages, Command
 
 NAME = 'pyexcel-xlsxw'
 AUTHOR = 'C.W.'
-VERSION = '0.4.1'
+VERSION = '0.4.2'
 EMAIL = 'wangc_2011@hotmail.com'
 LICENSE = 'New BSD'
 DESCRIPTION = (
@@ -15,7 +15,7 @@ DESCRIPTION = (
     ''
 )
 URL = 'https://github.com/pyexcel/pyexcel-xlsxw'
-DOWNLOAD_URL = '%s/archive/0.4.1.tar.gz' % URL
+DOWNLOAD_URL = '%s/archive/0.4.2.tar.gz' % URL
 FILES = ['README.rst',  'CHANGELOG.rst']
 KEYWORDS = [
     'xlsx'
@@ -47,11 +47,15 @@ INSTALL_REQUIRES = [
 PACKAGES = find_packages(exclude=['ez_setup', 'examples', 'tests'])
 EXTRAS_REQUIRE = {
 }
+# You do not need to read beyond this line
 PUBLISH_COMMAND = '{0} setup.py sdist bdist_wheel upload -r pypi'.format(
     sys.executable)
-GS_COMMAND = ('gs pyexcel-xlsxw v0.4.1 ' +
-              "Find 0.4.1 in changelog for more details")
-here = os.path.abspath(os.path.dirname(__file__))
+GS_COMMAND = ('gs pyexcel-xlsxw v0.4.2 ' +
+              "Find 0.4.2 in changelog for more details")
+NO_GS_MESSAGE = ('Automatic github release is disabled. ' +
+                 'Please install gease to enable it.')
+UPLOAD_FAILED_MSG = ('Upload failed. please run "%s" yourself.')
+HERE = os.path.abspath(os.path.dirname(__file__))
 
 
 class PublishCommand(Command):
@@ -74,15 +78,34 @@ class PublishCommand(Command):
     def run(self):
         try:
             self.status('Removing previous builds...')
-            rmtree(os.path.join(here, 'dist'))
+            rmtree(os.path.join(HERE, 'dist'))
         except OSError:
             pass
 
         self.status('Building Source and Wheel (universal) distribution...')
-        if os.system(GS_COMMAND) == 0:
-            os.system(PUBLISH_COMMAND)
+        run_status = True
+        if has_gease():
+            run_status = os.system(GS_COMMAND) == 0
+        else:
+            self.status(NO_GS_MESSAGE)
+        if run_status:
+            if os.system(PUBLISH_COMMAND) != 0:
+                self.status(UPLOAD_FAILED_MSG % PUBLISH_COMMAND)
 
         sys.exit()
+
+
+def has_gease():
+    """
+    test if github release command is installed
+
+    visit http://github.com/moremoban/gease for more info
+    """
+    try:
+        import gease  # noqa
+        return True
+    except ImportError:
+        return False
 
 
 def read_files(*files):
@@ -145,7 +168,6 @@ if __name__ == '__main__':
         include_package_data=True,
         zip_safe=False,
         classifiers=CLASSIFIERS,
-        setup_requires=['gease'],
         cmdclass={
             'publish': PublishCommand,
         }
