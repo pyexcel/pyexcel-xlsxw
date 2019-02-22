@@ -9,7 +9,7 @@ configuration:
     - "pyexcel-mobans:templates"
     - "pypi-mobans:templates"
     - ".moban.d"
-  configuration: pyexcel_xlsxw.yml
+  configuration: pyexcel-xlsxw.yml
 targets:
   - README.rst: README.rst
   - setup.py: setup.py
