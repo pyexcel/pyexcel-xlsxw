@@ -1,30 +1,46 @@
-# Template by setupmobans
+#!/usr/bin/env python3
+
+# Template by pypi-mobans
 import os
 import sys
 import codecs
+import locale
+import platform
 from shutil import rmtree
-from setuptools import setup, find_packages, Command
+
+from setuptools import Command, setup, find_packages
+
+
+# Work around mbcs bug in distutils.
+# http://bugs.python.org/issue10945
+# This work around is only if a project supports Python < 3.4
+
+# Work around for locale not being set
+try:
+    lc = locale.getlocale()
+    pf = platform.system()
+    if pf != 'Windows' and lc == (None, None):
+        locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+except (ValueError, UnicodeError, locale.Error):
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 NAME = 'pyexcel-xlsxw'
 AUTHOR = 'C.W.'
-VERSION = '0.4.2'
+VERSION = '0.4.3'
 EMAIL = 'wangc_2011@hotmail.com'
 LICENSE = 'New BSD'
 DESCRIPTION = (
-    'A wrapper library to write data in xlsx and xlsm format' +
-    ''
+    'A wrapper library to write data in xlsx and xlsm format'
 )
 URL = 'https://github.com/pyexcel/pyexcel-xlsxw'
-DOWNLOAD_URL = '%s/archive/0.4.2.tar.gz' % URL
-FILES = ['README.rst',  'CHANGELOG.rst']
+DOWNLOAD_URL = '%s/archive/0.4.3.tar.gz' % URL
+FILES = ['README.rst', 'CHANGELOG.rst']
 KEYWORDS = [
+    'python',
     'xlsx'
-    'python'
 ]
 
 CLASSIFIERS = [
-    'Topic :: Office/Business',
-    'Topic :: Utilities',
     'Topic :: Software Development :: Libraries',
     'Programming Language :: Python',
     'Intended Audience :: Developers',
@@ -39,9 +55,10 @@ CLASSIFIERS = [
 ]
 
 INSTALL_REQUIRES = [
-    'XlsxWriter==0.9.3',
+    'XlsxWriter>=0.9.3',
     'pyexcel-io>=0.4.0',
 ]
+SETUP_COMMANDS = {}
 
 
 PACKAGES = find_packages(exclude=['ez_setup', 'examples', 'tests'])
@@ -50,11 +67,12 @@ EXTRAS_REQUIRE = {
 # You do not need to read beyond this line
 PUBLISH_COMMAND = '{0} setup.py sdist bdist_wheel upload -r pypi'.format(
     sys.executable)
-GS_COMMAND = ('gs pyexcel-xlsxw v0.4.2 ' +
-              "Find 0.4.2 in changelog for more details")
+GS_COMMAND = ('gs pyexcel-xlsxw v0.4.3 ' +
+              "Find 0.4.3 in changelog for more details")
 NO_GS_MESSAGE = ('Automatic github release is disabled. ' +
                  'Please install gease to enable it.')
-UPLOAD_FAILED_MSG = ('Upload failed. please run "%s" yourself.')
+UPLOAD_FAILED_MSG = (
+    'Upload failed. please run "%s" yourself.' % PUBLISH_COMMAND)
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -79,6 +97,8 @@ class PublishCommand(Command):
         try:
             self.status('Removing previous builds...')
             rmtree(os.path.join(HERE, 'dist'))
+            rmtree(os.path.join(HERE, 'build'))
+            rmtree(os.path.join(HERE, 'pyexcel_xlsxw.egg-info'))
         except OSError:
             pass
 
@@ -93,6 +113,11 @@ class PublishCommand(Command):
                 self.status(UPLOAD_FAILED_MSG % PUBLISH_COMMAND)
 
         sys.exit()
+
+
+SETUP_COMMANDS.update({
+    'publish': PublishCommand
+})
 
 
 def has_gease():
@@ -119,7 +144,8 @@ def read_files(*files):
 
 def read(afile):
     """Read a file into setup"""
-    with codecs.open(afile, 'r', 'utf-8') as opened_file:
+    the_relative_file = os.path.join(HERE, afile)
+    with codecs.open(the_relative_file, 'r', 'utf-8') as opened_file:
         content = filter_out_test_code(opened_file)
         content = "".join(list(content))
         return content
@@ -151,6 +177,7 @@ def filter_out_test_code(file_handle):
 
 if __name__ == '__main__':
     setup(
+        test_suite="tests",
         name=NAME,
         author=AUTHOR,
         version=VERSION,
@@ -168,7 +195,5 @@ if __name__ == '__main__':
         include_package_data=True,
         zip_safe=False,
         classifiers=CLASSIFIERS,
-        cmdclass={
-            'publish': PublishCommand,
-        }
+        cmdclass=SETUP_COMMANDS
     )
