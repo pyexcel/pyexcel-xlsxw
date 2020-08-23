@@ -28,7 +28,7 @@ except (ValueError, UnicodeError, locale.Error):
     locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
 
 NAME = "pyexcel-xlsxw"
-AUTHOR = "C.W."
+AUTHOR = "chfw"
 VERSION = "0.4.3"
 EMAIL = "info@pyexcel.org"
 LICENSE = "New BSD"

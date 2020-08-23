@@ -3,5 +3,8 @@ mock;python_version<"3"
 codecov
 coverage
 flake8
-pyexcel
-pyexcel-xls
+black
+isort
+collective.checkdocs
+pygments
+moban
