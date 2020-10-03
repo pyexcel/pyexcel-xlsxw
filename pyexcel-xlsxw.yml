@@ -11,4 +11,5 @@ dependencies:
 test_dependencies:
   - pyexcel
   - pyexcel-xls
+  - pyexcel-xlsx
 description: A wrapper library to write data in xlsx and xlsm format
