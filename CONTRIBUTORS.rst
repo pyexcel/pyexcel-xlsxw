@@ -1,7 +1,8 @@
 
+
 1 contributors
 ================================================================================
 
 In alphabetical order:
 
-* `Bryan Deeney <https://api.github.com/users/bdeeney>`_
+* `Bryan Deeney <https://github.com/bdeeney>`_
