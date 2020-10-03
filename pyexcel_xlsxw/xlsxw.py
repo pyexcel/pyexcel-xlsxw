@@ -8,16 +8,18 @@
     :license: New BSD License
 """
 import xlsxwriter
+from pyexcel_io.plugin_api.abstract_sheet import ISheetWriter
+from pyexcel_io.plugin_api.abstract_writer import IWriter
 
-from pyexcel_io.book import BookWriter
-from pyexcel_io.sheet import SheetWriter
 
-
-class XLSXSheetWriter(SheetWriter):
+class XLSXSheetWriter(ISheetWriter):
     """
     xlsx sheet writer
     """
-    def set_sheet_name(self, name):
+
+    def __init__(self, ods_book, ods_sheet, sheet_name, **_):
+        self._native_book = ods_book
+        self._native_sheet = ods_sheet
         self.current_row = 0
 
     def write_row(self, array):
@@ -28,16 +30,23 @@ class XLSXSheetWriter(SheetWriter):
             self._native_sheet.write(self.current_row, i, array[i])
         self.current_row += 1
 
+    def close(self):
+        pass
 
-class XLSXWriter(BookWriter):
+
+class XLSXWriter(IWriter):
     """
     xlsx writer
     """
-    def __init__(self):
-        BookWriter.__init__(self)
-        self._native_book = None
 
-    def open(self, file_name, **keywords):
+    def __init__(
+        self,
+        file_alike_object,
+        file_type,
+        constant_memory=True,
+        default_date_format="dd/mm/yy",
+        **keywords
+    ):
         """
         Open a file for writing
 
@@ -50,17 +59,16 @@ class XLSXWriter(BookWriter):
                          can be found in `xlsxwriter's documentation
                          <http://xlsxwriter.readthedocs.io/workbook.html>`_
         """
-        keywords.setdefault('default_date_format', 'dd/mm/yy')
-        keywords.setdefault('constant_memory', True)
-        BookWriter.open(self, file_name, **keywords)
-
+        if "single_sheet_in_book" in keywords:
+            keywords.pop("single_sheet_in_book")
         self._native_book = xlsxwriter.Workbook(
-            file_name, keywords
-         )
+            file_alike_object, options=keywords
+        )
 
     def create_sheet(self, name):
-        return XLSXSheetWriter(self._native_book,
-                               self._native_book.add_worksheet(name), name)
+        return XLSXSheetWriter(
+            self._native_book, self._native_book.add_worksheet(name), name
+        )
 
     def close(self):
         """
