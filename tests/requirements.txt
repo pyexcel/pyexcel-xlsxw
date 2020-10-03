@@ -11,3 +11,4 @@ moban
 moban_jinja2_github
 pyexcel
 pyexcel-xls
+pyexcel-xlsx
