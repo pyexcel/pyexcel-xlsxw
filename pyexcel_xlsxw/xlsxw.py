@@ -4,12 +4,11 @@
 
     The lower level xlsx file format writer using xlsxwriter
 
-    :copyright: (c) 2016 by Onni Software Ltd & its contributors
+    :copyright: (c) 2016-2020 by Onni Software Ltd & its contributors
     :license: New BSD License
 """
 import xlsxwriter
-from pyexcel_io.plugin_api.abstract_sheet import ISheetWriter
-from pyexcel_io.plugin_api.abstract_writer import IWriter
+from pyexcel_io.plugin_api import ISheetWriter, IWriter
 
 
 class XLSXSheetWriter(ISheetWriter):
@@ -17,17 +16,16 @@ class XLSXSheetWriter(ISheetWriter):
     xlsx sheet writer
     """
 
-    def __init__(self, ods_book, ods_sheet, sheet_name, **_):
-        self._native_book = ods_book
-        self._native_sheet = ods_sheet
+    def __init__(self, xlsx_sheet):
+        self.xlsx_sheet = xlsx_sheet
         self.current_row = 0
 
     def write_row(self, array):
         """
         write a row into the file
         """
-        for i in range(0, len(array)):
-            self._native_sheet.write(self.current_row, i, array[i])
+        for index, cell in enumerate(array):
+            self.xlsx_sheet.write(self.current_row, index, cell)
         self.current_row += 1
 
     def close(self):
@@ -66,9 +64,8 @@ class XLSXWriter(IWriter):
         )
 
     def create_sheet(self, name):
-        return XLSXSheetWriter(
-            self._native_book, self._native_book.add_worksheet(name), name
-        )
+        sheet = self._native_book.add_worksheet(name)
+        return XLSXSheetWriter(sheet)
 
     def close(self):
         """
