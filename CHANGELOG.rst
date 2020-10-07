@@ -1,13 +1,20 @@
 Change log
 ================================================================================
 
+0.6.0 - tbd
+--------------------------------------------------------------------------------
+
+**Updated**
+
+#. New style xlsx plugins, promoted by pyexcel-io v0.6.0.
+
 0.4.2 - 23.10.2017
 --------------------------------------------------------------------------------
 
 **updated**
 
-#. pyexcel `pyexcel#105 <https://github.com//pyexcel/issues/105>`_, remove gease
-   from setup_requires, introduced by 0.4.1.
+#. pyexcel `pyexcel#105 <https://github.com/pyexcel/pyexcel/issues/105>`_,
+   remove gease from setup_requires, introduced by 0.4.1.
 #. remove python2.6 test support
 
 0.4.1 - 20.10.2017
@@ -15,8 +22,9 @@ Change log
 
 **added**
 
-#. `pyexcel#103 <https://github.com//pyexcel/issues/103>`_, include LICENSE file
-   in MANIFEST.in, meaning LICENSE file will appear in the released tar ball.
+#. `pyexcel#103 <https://github.com/pyexcel/pyexcel/issues/103>`_, include
+   LICENSE file in MANIFEST.in, meaning LICENSE file will appear in the released
+   tar ball.
 
 0.4.0 - 19.06.2017
 --------------------------------------------------------------------------------
@@ -26,8 +34,8 @@ Change log
 #. pyexcel-io plugin interface now updated to use `lml
    <https://github.com/chfw/lml>`_.
 #. Remove the false claim that this library writes xlsm
-#. `pyexcel-xlsxw#1 <https://github.com//pyexcel-xlsxw/issues/1>`_, Feature
-   request: support Workbook options in XLSXWriter.open()
+#. `#1 <https://github.com/pyexcel/pyexcel-xlsxw/issues/1>`_, Feature request:
+   support Workbook options in XLSXWriter.open()
 #. Support pyexcel-io v0.3.0
 #. initial release to see if xlsxwriter would write xlsx significantly faster
    than openpyxl
@@ -40,8 +48,8 @@ Change log
 #. pyexcel-io plugin interface now updated to use `lml
    <https://github.com/chfw/lml>`_.
 #. Remove the false claim that this library writes xlsm
-#. `pyexcel-xlsxw#1 <https://github.com//pyexcel-xlsxw/issues/1>`_, Feature
-   request: support Workbook options in XLSXWriter.open()
+#. `#1 <https://github.com/pyexcel/pyexcel-xlsxw/issues/1>`_, Feature request:
+   support Workbook options in XLSXWriter.open()
 #. Support pyexcel-io v0.3.0
 #. initial release to see if xlsxwriter would write xlsx significantly faster
    than openpyxl
@@ -54,8 +62,8 @@ Change log
 #. pyexcel-io plugin interface now updated to use `lml
    <https://github.com/chfw/lml>`_.
 #. Remove the false claim that this library writes xlsm
-#. `pyexcel-xlsxw#1 <https://github.com//pyexcel-xlsxw/issues/1>`_, Feature
-   request: support Workbook options in XLSXWriter.open()
+#. `#1 <https://github.com/pyexcel/pyexcel-xlsxw/issues/1>`_, Feature request:
+   support Workbook options in XLSXWriter.open()
 #. Support pyexcel-io v0.3.0
 #. initial release to see if xlsxwriter would write xlsx significantly faster
    than openpyxl
@@ -68,8 +76,8 @@ Change log
 #. pyexcel-io plugin interface now updated to use `lml
    <https://github.com/chfw/lml>`_.
 #. Remove the false claim that this library writes xlsm
-#. `pyexcel-xlsxw#1 <https://github.com//pyexcel-xlsxw/issues/1>`_, Feature
-   request: support Workbook options in XLSXWriter.open()
+#. `#1 <https://github.com/pyexcel/pyexcel-xlsxw/issues/1>`_, Feature request:
+   support Workbook options in XLSXWriter.open()
 #. Support pyexcel-io v0.3.0
 #. initial release to see if xlsxwriter would write xlsx significantly faster
    than openpyxl
@@ -82,8 +90,8 @@ Change log
 #. pyexcel-io plugin interface now updated to use `lml
    <https://github.com/chfw/lml>`_.
 #. Remove the false claim that this library writes xlsm
-#. `pyexcel-xlsxw#1 <https://github.com//pyexcel-xlsxw/issues/1>`_, Feature
-   request: support Workbook options in XLSXWriter.open()
+#. `#1 <https://github.com/pyexcel/pyexcel-xlsxw/issues/1>`_, Feature request:
+   support Workbook options in XLSXWriter.open()
 #. Support pyexcel-io v0.3.0
 #. initial release to see if xlsxwriter would write xlsx significantly faster
    than openpyxl
