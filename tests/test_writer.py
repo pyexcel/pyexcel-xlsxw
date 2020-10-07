@@ -17,7 +17,6 @@ class TestNativeXLWriter:
         writer = xlsx.XLSXWriter(self.testfile, "xlsx")
         writer.write(self.content)
         writer.close()
-        reader = xls.XLSBook()
         content = get_data(self.testfile)
         for key in content.keys():
             content[key] = list(content[key])
