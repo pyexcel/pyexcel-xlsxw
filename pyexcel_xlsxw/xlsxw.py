@@ -59,17 +59,17 @@ class XLSXWriter(IWriter):
         """
         if "single_sheet_in_book" in keywords:
             keywords.pop("single_sheet_in_book")
-        self._native_book = xlsxwriter.Workbook(
+        self.xlsx_book = xlsxwriter.Workbook(
             file_alike_object, options=keywords
         )
 
     def create_sheet(self, name):
-        sheet = self._native_book.add_worksheet(name)
+        sheet = self.xlsx_book.add_worksheet(name)
         return XLSXSheetWriter(sheet)
 
     def close(self):
         """
         This call actually save the file
         """
-        self._native_book.close()
-        self._native_book = None
+        self.xlsx_book.close()
+        self.xlsx_book = None

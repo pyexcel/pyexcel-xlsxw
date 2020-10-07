@@ -1,7 +1,7 @@
 import os
 
 from base import PyexcelHatWriterBase, PyexcelWriterBase
-from pyexcel_xls import xlsr as xls
+from pyexcel_xls import get_data
 
 from pyexcel_xlsxw import xlsxw as xlsx
 
@@ -18,8 +18,7 @@ class TestNativeXLWriter:
         writer.write(self.content)
         writer.close()
         reader = xls.XLSBook()
-        reader.open(self.testfile)
-        content = reader.read_all()
+        content = get_data(self.testfile)
         for key in content.keys():
             content[key] = list(content[key])
         assert content == self.content

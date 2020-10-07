@@ -13,3 +13,4 @@ test_dependencies:
   - pyexcel-xls
   - pyexcel-xlsx
 description: A wrapper library to write data in xlsx and xlsm format
+moban_command: false

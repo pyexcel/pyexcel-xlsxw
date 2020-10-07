@@ -1,4 +1,12 @@
+name: pyexcel-xlsxw
+organisation: pyexcel
 releases:
+- changes:
+  - action: Updated
+    details:
+    - 'New style xlsx plugins, promoted by pyexcel-io v0.6.0.'
+  date: tbd
+  version: 0.6.0
 - changes:
   - action: updated
     details:
