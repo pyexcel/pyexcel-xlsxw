@@ -36,7 +36,7 @@ DESCRIPTION = (
     "A wrapper library to write data in xlsx and xlsm format"
 )
 URL = "https://github.com/pyexcel/pyexcel-xlsxw"
-DOWNLOAD_URL = "%s/archive/0.4.3.tar.gz" % URL
+DOWNLOAD_URL = "%s/archive/0.6.0.tar.gz" % URL
 FILES = ["README.rst", "CHANGELOG.rst"]
 KEYWORDS = [
     "python",
@@ -63,7 +63,7 @@ CLASSIFIERS = [
 
 INSTALL_REQUIRES = [
     "XlsxWriter>=0.9.3",
-    "pyexcel-io>=0.4.0",
+    "pyexcel-io>=0.6.2",
 ]
 SETUP_COMMANDS = {}
 
@@ -72,8 +72,8 @@ EXTRAS_REQUIRE = {
 }
 # You do not need to read beyond this line
 PUBLISH_COMMAND = "{0} setup.py sdist bdist_wheel upload -r pypi".format(sys.executable)
-GS_COMMAND = ("gs pyexcel-xlsxw v0.4.3 " +
-              "Find 0.4.3 in changelog for more details")
+GS_COMMAND = ("gs pyexcel-xlsxw v0.6.0 " +
+              "Find 0.6.0 in changelog for more details")
 NO_GS_MESSAGE = ("Automatic github release is disabled. " +
                  "Please install gease to enable it.")
 UPLOAD_FAILED_MSG = (
