@@ -1,0 +1,18 @@
+overrides: "pyexcel.yaml"
+name: "pyexcel-xlsxw"
+nick_name: xlsxw
+version: 0.6.0
+current_version: 0.6.0
+release: 0.6.0
+file_type: xlsx
+dependencies:
+  - XlsxWriter>=0.9.3
+  - pyexcel-io>=0.6.2
+test_dependencies:
+  - pyexcel
+  - pyexcel-xls
+  - pyexcel-xlsx
+description: A wrapper library to write data in xlsx and xlsm format
+moban_command: false
+python_requires: ">=3.6"
+min_python_version: "3.6"

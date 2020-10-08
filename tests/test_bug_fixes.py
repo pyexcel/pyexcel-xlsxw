@@ -3,25 +3,25 @@
   This file keeps all fixes for issues found
 
 """
-import os
 import datetime
+import os
 from textwrap import dedent
 from unittest import TestCase
+
 import pyexcel as pe
 
 from pyexcel_xlsxw import save_data
 
 
 class TestBugFix(TestCase):
-
     def test_pyexcel_issue_5(self):
         """pyexcel issue #5
 
         datetime is not properly parsed
         """
-        s = pe.load(os.path.join("tests",
-                                 "test-fixtures",
-                                 "test-date-format.xls"))
+        s = pe.load(
+            os.path.join("tests", "test-fixtures", "test-date-format.xls")
+        )
         s.save_as("issue5.xlsx")
         s2 = pe.load("issue5.xlsx")
         assert s[0, 0] == datetime.datetime(2015, 11, 11, 11, 12, 0)
@@ -33,13 +33,12 @@ class TestBugFix(TestCase):
         formular got lost
         """
         tmp_file = "issue_8_save_as.xlsx"
-        s = pe.load(os.path.join("tests",
-                                 "test-fixtures",
-                                 "test8.xlsx"))
+        s = pe.load(os.path.join("tests", "test-fixtures", "test8.xlsx"))
         s.save_as(tmp_file)
         s2 = pe.load(tmp_file)
         self.assertEqual(str(s), str(s2))
-        content = dedent("""
+        content = dedent(
+            """
         CNY:
         +----------+----------+------+---+-------+
         | 01/09/13 | 02/09/13 | 1000 | 5 | 13.89 |
@@ -47,7 +46,8 @@ class TestBugFix(TestCase):
         | 02/09/13 | 03/09/13 | 2000 | 6 | 33.33 |
         +----------+----------+------+---+-------+
         | 03/09/13 | 04/09/13 | 3000 | 7 | 58.33 |
-        +----------+----------+------+---+-------+""").strip("\n")
+        +----------+----------+------+---+-------+"""
+        ).strip("\n")
         self.assertEqual(str(s2), content)
         os.unlink(tmp_file)
 
@@ -57,15 +57,13 @@ class TestBugFix(TestCase):
         formular got lost
         """
         tmp_file = "issue_8_save_as.xlsx"
-        f = open(os.path.join("tests",
-                              "test-fixtures",
-                              "test8.xlsx"),
-                 "rb")
-        s = pe.load_from_memory('xlsx', f.read())
+        f = open(os.path.join("tests", "test-fixtures", "test8.xlsx"), "rb")
+        s = pe.load_from_memory("xlsx", f.read())
         s.save_as(tmp_file)
         s2 = pe.load(tmp_file)
         self.assertEqual(str(s), str(s2))
-        content = dedent("""
+        content = dedent(
+            """
         CNY:
         +----------+----------+------+---+-------+
         | 01/09/13 | 02/09/13 | 1000 | 5 | 13.89 |
@@ -73,7 +71,8 @@ class TestBugFix(TestCase):
         | 02/09/13 | 03/09/13 | 2000 | 6 | 33.33 |
         +----------+----------+------+---+-------+
         | 03/09/13 | 04/09/13 | 3000 | 7 | 58.33 |
-        +----------+----------+------+---+-------+""").strip("\n")
+        +----------+----------+------+---+-------+"""
+        ).strip("\n")
         self.assertEqual(str(s2), content)
         os.unlink(tmp_file)
 
@@ -86,8 +85,9 @@ class TestBugFix(TestCase):
         cell_content = "= Hello World ="
         tmp_file = "workbook_options.xlsx"
         data = {"Sheet 1": [[cell_content]]}
-        save_data(tmp_file, data, strings_to_formulas=False,
-                  library='pyexcel-xlsxw')
+        save_data(
+            tmp_file, data, strings_to_formulas=False, library="pyexcel-xlsxw"
+        )
         sheet = pe.get_sheet(file_name=tmp_file)
         self.assertEqual(sheet[0][0], cell_content)
         os.unlink(tmp_file)

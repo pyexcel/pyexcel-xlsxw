@@ -1,19 +1,11 @@
+overrides: "git://github.com/pyexcel/pyexcel-mobans!/mobanfile.yaml"
 configuration:
-  configuration_dir: "commons/config"
-  template_dir:
-  - "commons/templates"
-  - "setupmobans/templates"
-  - ".moban.d"
-  configuration: pyexcel_xlsxw.yml
+  configuration: pyexcel-xlsxw.yml
 targets:
-  - README.rst: README.rst
-  - setup.py: setup.py
+  - README.rst: custom_README.rst.jj2
+  - setup.py: custom_setup.py.jj2
   - "docs/source/conf.py": "docs/source/conf.py.jj2"
-  - .travis.yml: travis.yml
-  - requirements.txt: requirements.txt
-  - LICENSE: NEW_BSD_LICENSE.jj2
+  - .travis.yml: custom_travis.yml.jj2
   - MANIFEST.in: MANIFEST.in.jj2
-  - test.sh: test.script.jj2
-  - test.bat: test.script.jj2
   - .gitignore: gitignore.jj2
-  - "tests/requirements.txt": "tests/requirements.txt"
+  - "tests/requirements.txt": "tests/custom_requirements.txt.jj2"

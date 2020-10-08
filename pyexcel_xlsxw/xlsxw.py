@@ -4,40 +4,47 @@
 
     The lower level xlsx file format writer using xlsxwriter
 
-    :copyright: (c) 2016 by Onni Software Ltd & its contributors
+    :copyright: (c) 2016-2020 by Onni Software Ltd & its contributors
     :license: New BSD License
 """
 import xlsxwriter
-
-from pyexcel_io.book import BookWriter
-from pyexcel_io.sheet import SheetWriter
+from pyexcel_io.plugin_api import ISheetWriter, IWriter
 
 
-class XLSXSheetWriter(SheetWriter):
+class XLSXSheetWriter(ISheetWriter):
     """
     xlsx sheet writer
     """
-    def set_sheet_name(self, name):
+
+    def __init__(self, xlsx_sheet):
+        self.xlsx_sheet = xlsx_sheet
         self.current_row = 0
 
     def write_row(self, array):
         """
         write a row into the file
         """
-        for i in range(0, len(array)):
-            self._native_sheet.write(self.current_row, i, array[i])
+        for index, cell in enumerate(array):
+            self.xlsx_sheet.write(self.current_row, index, cell)
         self.current_row += 1
 
+    def close(self):
+        pass
 
-class XLSXWriter(BookWriter):
+
+class XLSXWriter(IWriter):
     """
     xlsx writer
     """
-    def __init__(self):
-        BookWriter.__init__(self)
-        self._native_book = None
 
-    def open(self, file_name, **keywords):
+    def __init__(
+        self,
+        file_alike_object,
+        file_type,
+        constant_memory=True,
+        default_date_format="dd/mm/yy",
+        **keywords
+    ):
         """
         Open a file for writing
 
@@ -50,21 +57,19 @@ class XLSXWriter(BookWriter):
                          can be found in `xlsxwriter's documentation
                          <http://xlsxwriter.readthedocs.io/workbook.html>`_
         """
-        keywords.setdefault('default_date_format', 'dd/mm/yy')
-        keywords.setdefault('constant_memory', True)
-        BookWriter.open(self, file_name, **keywords)
-
-        self._native_book = xlsxwriter.Workbook(
-            file_name, keywords
-         )
+        if "single_sheet_in_book" in keywords:
+            keywords.pop("single_sheet_in_book")
+        self.xlsx_book = xlsxwriter.Workbook(
+            file_alike_object, options=keywords
+        )
 
     def create_sheet(self, name):
-        return XLSXSheetWriter(self._native_book,
-                               self._native_book.add_worksheet(name), name)
+        sheet = self.xlsx_book.add_worksheet(name)
+        return XLSXSheetWriter(sheet)
 
     def close(self):
         """
         This call actually save the file
         """
-        self._native_book.close()
-        self._native_book = None
+        self.xlsx_book.close()
+        self.xlsx_book = None
