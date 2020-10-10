@@ -1,6 +1,7 @@
 import os
 
 import pyexcel
+
 from nose.tools import eq_
 
 
