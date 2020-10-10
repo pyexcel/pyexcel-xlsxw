@@ -19,7 +19,7 @@ from pyexcel_io.plugins import IOPluginInfoChainV2
 __FILE_TYPE__ = "xlsx"
 IOPluginInfoChainV2(__name__).add_a_writer(
     relative_plugin_class_path="xlsxw.XLSXWriter",
-    locations=["file"],
+    locations=["file", "memory"],
     file_types=[__FILE_TYPE__],
     stream_type="binary",
 )

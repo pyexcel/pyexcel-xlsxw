@@ -29,14 +29,14 @@ except (ValueError, UnicodeError, locale.Error):
 
 NAME = "pyexcel-xlsxw"
 AUTHOR = "chfw"
-VERSION = "0.6.0"
+VERSION = "0.6.1"
 EMAIL = "info@pyexcel.org"
 LICENSE = "New BSD"
 DESCRIPTION = (
     "A wrapper library to write data in xlsx and xlsm format"
 )
 URL = "https://github.com/pyexcel/pyexcel-xlsxw"
-DOWNLOAD_URL = "%s/archive/0.6.0.tar.gz" % URL
+DOWNLOAD_URL = "%s/archive/0.6.1.tar.gz" % URL
 FILES = ["README.rst", "CHANGELOG.rst"]
 KEYWORDS = [
     "python",
@@ -73,8 +73,8 @@ EXTRAS_REQUIRE = {
 }
 # You do not need to read beyond this line
 PUBLISH_COMMAND = "{0} setup.py sdist bdist_wheel upload -r pypi".format(sys.executable)
-GS_COMMAND = ("gs pyexcel-xlsxw v0.6.0 " +
-              "Find 0.6.0 in changelog for more details")
+GS_COMMAND = ("gs pyexcel-xlsxw v0.6.1 " +
+              "Find 0.6.1 in changelog for more details")
 NO_GS_MESSAGE = ("Automatic github release is disabled. " +
                  "Please install gease to enable it.")
 UPLOAD_FAILED_MSG = (
