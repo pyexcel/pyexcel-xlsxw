@@ -8,7 +8,7 @@
     :license: New BSD License
 """
 import xlsxwriter
-from pyexcel_io.plugin_api import ISheetWriter, IWriter
+from pyexcel_io.plugin_api import IWriter, ISheetWriter
 
 
 class XLSXSheetWriter(ISheetWriter):

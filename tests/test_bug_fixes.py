@@ -3,13 +3,12 @@
   This file keeps all fixes for issues found
 
 """
-import datetime
 import os
+import datetime
 from textwrap import dedent
 from unittest import TestCase
 
 import pyexcel as pe
-
 from pyexcel_xlsxw import save_data
 
 

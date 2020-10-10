@@ -3,6 +3,7 @@ import sys
 
 import pyexcel
 from base import PyexcelMultipleSheetBase
+
 from nose.tools import raises
 
 if sys.version_info[0] == 2 and sys.version_info[1] < 7:
@@ -60,7 +61,7 @@ class TestAddBooks:
     def test_load_a_single_sheet3(self):
         pyexcel.get_book(file_name=self.testfile, sheet_index=10000)
 
-    @raises(KeyError)
+    @raises(ValueError)
     def test_load_a_single_sheet4(self):
         pyexcel.get_book(file_name=self.testfile, sheet_name="Not exist")
 
