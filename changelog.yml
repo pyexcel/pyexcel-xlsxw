@@ -2,10 +2,10 @@ name: pyexcel-xlsxw
 organisation: pyexcel
 releases:
 - changes:
-  - action: Updated
+  - action: Fixed
     details:
     - '`#9`: pyexcel-xlsxw 0.6.0 failed to write to a stream'
-  date: 8.10.2020
+  date: 10.10.2020
   version: 0.6.1
 - changes:
   - action: Updated
