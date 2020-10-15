@@ -1,3 +1,2 @@
-https://github.com/pyexcel/pyexcel/archive/master.zip
-https://github.com/pyexcel/pyexcel-io/archive/dev.zip
+https://github.com/pyexcel/libxlsxwpy/archive/master.zip
 

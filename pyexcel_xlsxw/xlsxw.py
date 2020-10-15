@@ -7,7 +7,7 @@
     :copyright: (c) 2016-2020 by Onni Software Ltd & its contributors
     :license: New BSD License
 """
-import xlsxwriter
+from libxlsxwpy import Book
 from pyexcel_io.plugin_api import IWriter, ISheetWriter
 
 
@@ -25,7 +25,15 @@ class XLSXSheetWriter(ISheetWriter):
         write a row into the file
         """
         for index, cell in enumerate(array):
-            self.xlsx_sheet.write(self.current_row, index, cell)
+            if isinstance(cell, (int, float)):
+                self.xlsx_sheet.write_number(self.current_row, index, cell)
+            elif isinstance(cell, bool):
+                self.xlsx_sheet.write_boolean(self.current_row, index, cell)
+            else:
+                self.xlsx_sheet.write_string(
+                    self.current_row, index, str(cell)
+                )
+
         self.current_row += 1
 
     def close(self):
@@ -39,7 +47,7 @@ class XLSXWriter(IWriter):
 
     def __init__(
         self,
-        file_alike_object,
+        file_name,
         file_type,
         constant_memory=True,
         default_date_format="dd/mm/yy",
@@ -59,11 +67,11 @@ class XLSXWriter(IWriter):
         """
         if "single_sheet_in_book" in keywords:
             keywords.pop("single_sheet_in_book")
-        self.xlsx_book = xlsxwriter.Workbook(
-            file_alike_object, options=keywords
-        )
+        self.xlsx_book = Book()
+        self.xlsx_book.open(file_name)
 
     def create_sheet(self, name):
+        print(name)
         sheet = self.xlsx_book.add_worksheet(name)
         return XLSXSheetWriter(sheet)
 
