@@ -5,11 +5,11 @@ pyexcel-xlsxw - Let you focus on data, instead of xlsx format
 .. image:: https://raw.githubusercontent.com/pyexcel/pyexcel.github.io/master/images/patreon.png
    :target: https://www.patreon.com/chfw
 
-.. image:: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
+.. image:: https://raw.githubusercontent.com/pyexcel/pyexcel-mobans/master/images/awesome-badge.svg
    :target: https://awesome-python.com/#specific-formats-processing
 
-.. image:: https://travis-ci.org/pyexcel/pyexcel-xlsxw.svg?branch=master
-   :target: http://travis-ci.org/pyexcel/pyexcel-xlsxw
+.. image:: https://github.com/pyexcel/pyexcel-xlsxw/workflows/run_tests/badge.svg
+   :target: http://github.com/pyexcel/pyexcel-xlsxw/actions
 
 .. image:: https://codecov.io/gh/pyexcel/pyexcel-xlsxw/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/pyexcel/pyexcel-xlsxw
@@ -19,7 +19,7 @@ pyexcel-xlsxw - Let you focus on data, instead of xlsx format
 
 
 .. image:: https://pepy.tech/badge/pyexcel-xlsxw/month
-   :target: https://pepy.tech/project/pyexcel-xlsxw/month
+   :target: https://pepy.tech/project/pyexcel-xlsxw
 
 
 .. image:: https://img.shields.io/gitter/room/gitterHQ/gitter.svg
@@ -57,6 +57,8 @@ Known constraints
 ==================
 
 Fonts, colors and charts are not supported.
+
+Nor to read password protected xls, xlsx and ods files.
 
 Installation
 ================================================================================
