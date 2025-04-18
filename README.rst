@@ -8,14 +8,12 @@ pyexcel-xlsxw - Let you focus on data, instead of xlsx format
 .. image:: https://raw.githubusercontent.com/pyexcel/pyexcel-mobans/master/images/awesome-badge.svg
    :target: https://awesome-python.com/#specific-formats-processing
 
-.. image:: https://github.com/pyexcel/pyexcel-xlsxw/workflows/run_tests/badge.svg
-   :target: http://github.com/pyexcel/pyexcel-xlsxw/actions
-
 .. image:: https://codecov.io/gh/pyexcel/pyexcel-xlsxw/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/pyexcel/pyexcel-xlsxw
 
 .. image:: https://badge.fury.io/py/pyexcel-xlsxw.svg
    :target: https://pypi.org/project/pyexcel-xlsxw
+
 
 
 .. image:: https://pepy.tech/badge/pyexcel-xlsxw/month
@@ -38,19 +36,11 @@ pyexcel-xlsxw - Let you focus on data, instead of xlsx format
 Support the project
 ================================================================================
 
-If your company has embedded pyexcel and its components into a revenue generating
-product, please support me on github, `patreon <https://www.patreon.com/bePatron?u=5537627>`_
-or `bounty source <https://salt.bountysource.com/teams/chfw-pyexcel>`_ to maintain
-the project and develop it further.
-
-If you are an individual, you are welcome to support me too and for however long
-you feel like. As my backer, you will receive
-`early access to pyexcel related contents <https://www.patreon.com/pyexcel/posts>`_.
-
-And your issues will get prioritized if you would like to become my patreon as `pyexcel pro user`.
-
-With your financial support, I will be able to invest
-a little bit more time in coding, documentation and writing interesting posts.
+If your company uses pyexcel and its components in a revenue-generating product,
+please consider supporting the project on GitHub or
+`Patreon <https://www.patreon.com/bePatron?u=5537627>`_. Your financial
+support will enable me to dedicate more time to coding, improving documentation,
+and creating engaging content.
 
 
 Known constraints
@@ -90,15 +80,8 @@ As a standalone library
 
     >>> import os
     >>> import sys
-    >>> if sys.version_info[0] < 3:
-    ...     from StringIO import StringIO
-    ... else:
-    ...     from io import BytesIO as StringIO
-    >>> PY2 = sys.version_info[0] == 2
-    >>> if PY2 and sys.version_info[1] < 7:
-    ...      from ordereddict import OrderedDict
-    ... else:
-    ...     from collections import OrderedDict
+    >>> from io import BytesIO
+    >>> from collections import OrderedDict
 
 
 Write to an xlsx file
@@ -140,7 +123,7 @@ Here's the sample code to write a dictionary to an xlsx file:
     >>> data = OrderedDict()
     >>> data.update({"Sheet 1": [[1, 2, 3], [4, 5, 6]]})
     >>> data.update({"Sheet 2": [[7, 8, 9], [10, 11, 12]]})
-    >>> io = StringIO()
+    >>> io = BytesIO()
     >>> save_data(io, data)
     >>> # do something with the io
     >>> # In reality, you might give it to your http response
@@ -200,10 +183,10 @@ Here is the sample code:
     >>> sheet.save_as("another_file.xlsx")
 
 
-Writing to a StringIO instance
+Writing to a BytesIO instance
 ********************************************************************************
 
-You need to pass a StringIO instance to Writer:
+You need to pass a BytesIO instance to Writer:
 
 .. code-block:: python
 
@@ -211,7 +194,7 @@ You need to pass a StringIO instance to Writer:
     ...     [1, 2, 3],
     ...     [4, 5, 6]
     ... ]
-    >>> io = StringIO()
+    >>> io = BytesIO()
     >>> sheet = pe.Sheet(data)
     >>> io = sheet.save_to_memory("xlsx", io)
     >>> # then do something with io
@@ -243,26 +226,29 @@ Then install relevant development requirements:
 #. pip install -r tests/requirements.txt
 
 Once you have finished your changes, please provide test case(s), relevant documentation
-and update CHANGELOG.rst.
+and update changelog.yml
 
 .. note::
 
     As to rnd_requirements.txt, usually, it is created when a dependent
-    library is not released. Once the dependecy is installed
+    library is not released. Once the dependency is installed
     (will be released), the future
     version of the dependency in the requirements.txt will be valid.
 
 
 How to test your contribution
-------------------------------
+--------------------------------------------------------------------------------
 
-Although `nose` and `doctest` are both used in code testing, it is adviable that unit tests are put in tests. `doctest` is incorporated only to make sure the code examples in documentation remain valid across different development releases.
+Although `nose` and `doctest` are both used in code testing, it is advisable
+that unit tests are put in tests. `doctest` is incorporated only to make sure
+the code examples in documentation remain valid across different development
+releases.
 
 On Linux/Unix systems, please launch your tests like this::
 
     $ make
 
-On Windows systems, please issue this command::
+On Windows, please issue this command::
 
     > test.bat
 
@@ -274,7 +260,7 @@ Please run::
 
     $ make format
 
-so as to beautify your code otherwise travis-ci may fail your unit test.
+so as to beautify your code otherwise your build may fail your unit test.
 
 
 
