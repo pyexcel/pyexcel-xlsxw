@@ -2,8 +2,6 @@ import os
 
 import pyexcel
 
-import pytest
-
 
 def create_sample_file1(file):
     data = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 1.1, 1]
