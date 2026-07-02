@@ -1,12 +1,13 @@
 """
-    pyexcel_xlsxw
-    ~~~~~~~~~~~~~~~~~~~
+pyexcel_xlsxw
+~~~~~~~~~~~~~~~~~~~
 
-    The lower level xlsx file format writer using xlsxwriter
+The lower level xlsx file format writer using xlsxwriter
 
-    :copyright: (c) 2016 by Onni Software Ltd & its contributors
-    :license: New BSD License
+:copyright: (c) 2016 by Onni Software Ltd & its contributors
+:license: New BSD License
 """
+
 from pyexcel_io.io import get_data as read_data
 from pyexcel_io.io import isstream
 from pyexcel_io.io import store_data as write_data

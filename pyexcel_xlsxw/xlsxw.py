@@ -1,12 +1,13 @@
 """
-    pyexcel_xlsxw
-    ~~~~~~~~~~~~~~~~~~~
+pyexcel_xlsxw
+~~~~~~~~~~~~~~~~~~~
 
-    The lower level xlsx file format writer using xlsxwriter
+The lower level xlsx file format writer using xlsxwriter
 
-    :copyright: (c) 2016-2020 by Onni Software Ltd & its contributors
-    :license: New BSD License
+:copyright: (c) 2016-2020 by Onni Software Ltd & its contributors
+:license: New BSD License
 """
+
 from libxlsxwpy import Book
 from pyexcel_io.plugin_api import IWriter, ISheetWriter
 
