@@ -1,3 +1,3 @@
 #/bin/bash
 pip freeze
-nosetests --with-coverage --cover-package pyexcel_xlsxw --cover-package tests tests --with-doctest --doctest-extension=.rst README.rst docs/source pyexcel_xlsxw
+coverage run -m --source=pyexcel_xlsxw pytest --doctest-modules && coverage report --show-missing

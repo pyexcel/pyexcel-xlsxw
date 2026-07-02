@@ -4,8 +4,6 @@ from base import PyexcelWriterBase, PyexcelHatWriterBase
 from pyexcel_xls import get_data
 from pyexcel_xlsxw import xlsxw as xlsx
 
-from nose.tools import eq_
-
 
 class TestNativeXLWriter:
     def test_write_book(self):
@@ -21,19 +19,19 @@ class TestNativeXLWriter:
         content = get_data(self.testfile)
         for key in content.keys():
             content[key] = list(content[key])
-        eq_(content, self.content)
+        assert content == self.content
 
-    def tearDown(self):
+    def teardown_method(self):
         if os.path.exists(self.testfile):
             os.unlink(self.testfile)
 
 
 class TestXLSnCSVWriter(PyexcelWriterBase):
-    def setUp(self):
+    def setup_method(self):
         self.testfile = "test.xlsx"
         self.testfile2 = "test.csv"
 
-    def tearDown(self):
+    def teardown_method(self):
         if os.path.exists(self.testfile):
             os.unlink(self.testfile)
         if os.path.exists(self.testfile2):
@@ -41,9 +39,9 @@ class TestXLSnCSVWriter(PyexcelWriterBase):
 
 
 class TestXLSHatWriter(PyexcelHatWriterBase):
-    def setUp(self):
+    def setup_method(self):
         self.testfile = "test.xlsx"
 
-    def tearDown(self):
+    def teardown_method(self):
         if os.path.exists(self.testfile):
             os.unlink(self.testfile)

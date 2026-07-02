@@ -9,9 +9,11 @@ dependencies:
   - XlsxWriter>=0.9.3
   - pyexcel-io>=0.6.2
 test_dependencies:
+  - pytest
   - pyexcel
   - pyexcel-xls
   - pyexcel-xlsx
+use_pytest: true
 description: A wrapper library to write data in xlsx and xlsm format
 moban_command: false
 python_requires: ">=3.6"

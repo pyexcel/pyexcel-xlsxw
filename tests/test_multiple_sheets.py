@@ -2,9 +2,8 @@ import os
 import sys
 
 import pyexcel
+import pytest
 from base import PyexcelMultipleSheetBase
-
-from nose.tools import raises
 
 if sys.version_info[0] == 2 and sys.version_info[1] < 7:
     from ordereddict import OrderedDict
@@ -13,13 +12,13 @@ else:
 
 
 class TestXlsNXlsxMultipleSheets(PyexcelMultipleSheetBase):
-    def setUp(self):
+    def setup_method(self):
         self.testfile = "multiple1.xls"
         self.testfile2 = "multiple1.xlsx"
         self.content = _produce_ordered_dict()
         self._write_test_file(self.testfile)
 
-    def tearDown(self):
+    def teardown_method(self):
         self._clean_up()
 
 
@@ -35,7 +34,7 @@ class TestAddBooks:
         self.rows = 3
         pyexcel.save_book_as(bookdict=self.content, dest_file_name=file)
 
-    def setUp(self):
+    def setup_method(self):
         self.testfile = "multiple3.xlsx"
         self.testfile2 = "multiple1.xlsx"
         self.testfile3 = "multiple2.xlsx"
@@ -57,13 +56,13 @@ class TestAddBooks:
         assert len(b1.sheet_names()) == 1
         assert b1["Sheet2"].to_array() == self.content["Sheet2"]
 
-    @raises(IndexError)
     def test_load_a_single_sheet3(self):
-        pyexcel.get_book(file_name=self.testfile, sheet_index=10000)
+        with pytest.raises(IndexError):
+            pyexcel.get_book(file_name=self.testfile, sheet_index=10000)
 
-    @raises(ValueError)
     def test_load_a_single_sheet4(self):
-        pyexcel.get_book(file_name=self.testfile, sheet_name="Not exist")
+        with pytest.raises(ValueError):
+            pyexcel.get_book(file_name=self.testfile, sheet_name="Not exist")
 
     def test_delete_sheets(self):
         b1 = pyexcel.load_book(self.testfile)
@@ -212,7 +211,7 @@ class TestAddBooks:
         except TypeError:
             assert 1 == 1
 
-    def tearDown(self):
+    def teardown_method(self):
         if os.path.exists(self.testfile):
             os.unlink(self.testfile)
         if os.path.exists(self.testfile2):
@@ -220,7 +219,7 @@ class TestAddBooks:
 
 
 class TestMultiSheetReader:
-    def setUp(self):
+    def setup_method(self):
         self.testfile = "file_with_an_empty_sheet.xlsx"
 
     def test_reader_with_correct_sheets(self):

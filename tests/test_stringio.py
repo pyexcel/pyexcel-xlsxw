@@ -3,8 +3,6 @@ import os
 import pyexcel
 from base import create_sample_file1
 
-from nose.tools import eq_
-
 
 class TestStringIO:
     def test_ods_stringio(self):
@@ -15,7 +13,7 @@ class TestStringIO:
             r = pyexcel.get_sheet(file_type="xlsx", file_content=content)
             result = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 1.1, 1]
             actual = list(r.enumerate())
-            eq_(result, actual)
+            assert result == actual
         if os.path.exists(odsfile):
             os.unlink(odsfile)
 
@@ -25,4 +23,4 @@ class TestStringIO:
         r = pyexcel.get_sheet(file_type="xlsx", file_content=io.getvalue())
         result = [1, 2, 3, 4, 5, 6]
         actual = list(r.enumerate())
-        eq_(result, actual)
+        assert result == actual
